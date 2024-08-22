@@ -15,17 +15,18 @@ class MailUtils:
         else:
             self.email: str = email
         self.imap_pass: str = imap_pass
-        self.domain: str = IMAP_DOMAIN or self.parse_domain()
+        self.domain: str = self.parse_domain()
 
     def parse_domain(self) -> str:
-        domain: str = self.email.split("@")[-1]
+        domain = "firstmail.ltd"
+        # domain: str = self.email.split("@")[-1]
 
-        if "hotmail" in domain or "live" in domain:
-            domain = "outlook.com"
-        elif "firstmail" in domain:
-            domain = "firstmail.ltd"
-        elif any(sub in domain for sub in ["rambler", "myrambler", "autorambler", "ro.ru"]):
-            domain = "rambler.ru"
+        # if "hotmail" in domain or "live" in domain:
+        #     domain = "outlook.com"
+        # elif "firstmail" in domain:
+        #     domain = "firstmail.ltd"
+        # elif any(sub in domain for sub in ["rambler", "myrambler", "autorambler", "ro.ru"]):
+        #     domain = "rambler.ru"
 
         return f"imap.{domain}"
 
